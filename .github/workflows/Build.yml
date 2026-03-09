@@ -18,6 +18,7 @@ jobs:
       - name: Set up Java21
         uses: actions/setup-java@v5
         with:
+          distribution: 'temurin'
           java-version: '21'
 
       - name: Check Java version
