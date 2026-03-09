@@ -1,0 +1,27 @@
+name: Build and Test Application
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+
+jobs:
+    
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java21
+        uses: actions/setup-java@v5
+        with:
+          java-version: '21'
+
+      - name: Check Java version
+        run: java -version
+
+      - name: MVN Build
+        run: mvn clean install -DskipTests
