@@ -7,13 +7,13 @@ on:
     branches: [ main ]
 
 jobs:
-    # build-and-test:
-    #     uses: ./.github/workflows/Build.yml
+    build-and-test:
+        uses: ./.github/workflows/Build.yml
 
-    # test:
-    #     needs: build-and-test
-    #     uses: ./.github/workflows/test.yml
+    test:
+        needs: build-and-test
+        uses: ./.github/workflows/test.yml
     
     docker-build-push:
-        #needs: test
+        needs: test
         uses: ./.github/workflows/docker-build-push.yml
