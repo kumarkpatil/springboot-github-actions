@@ -13,6 +13,10 @@ jobs:
     test:
         needs: build-and-test
         uses: ./.github/workflows/test.yml
+
+    sonarlint:
+        needs: test
+        uses: ./.github/workflows/sonarlint.yml
     
     docker-build-push:
         needs: test
