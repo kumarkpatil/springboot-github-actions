@@ -18,6 +18,6 @@ jobs:
         needs: test
         uses: ./.github/workflows/sonarlint.yml
     
-    docker-build-push:
-        needs: test
-        uses: ./.github/workflows/docker-build-push.yml
+    # docker-build-push:
+    #     needs: test
+    #     uses: ./.github/workflows/docker-build-push.yml
