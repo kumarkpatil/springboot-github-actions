@@ -10,11 +10,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2  
         
-      - name: Set up sonar-scanner
-        uses: sonarsource/sonarcloud-github-action@master
+      - name: Cache SonarQube packages
+        uses: actions/cache@v4
         with:
-          args: >
-            -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }}
-            -Dsonar.organization=${{ vars.SONAR_ORGANIZATION }}
-            -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.login=${{ vars.SONAR_TOKEN }}
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+    
+      - name: Build and analyze
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=kumarkpatil_springboot-github-actions
