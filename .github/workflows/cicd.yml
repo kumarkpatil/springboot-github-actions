@@ -17,7 +17,8 @@ jobs:
     sonarlint:
         needs: test
         uses: ./.github/workflows/sonarlint.yml
-        secrets: inherit
+        secrets:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     
     # docker-build-push:
     #     needs: test

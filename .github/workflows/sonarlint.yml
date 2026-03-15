@@ -27,3 +27,9 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=kumarkpatil_springboot-github-actions
+
+      - name: Sonar Quality Gate Check
+        uses: sonarsource/sonarqube-quality-gate-action@v1
+        timeout-minutes: 2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
