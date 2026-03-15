@@ -24,9 +24,10 @@ jobs:
           java-version: '21'
     
       - name: Build and analyze
+        uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=kumarkpatil_springboot-github-actions
+        #run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=kumarkpatil_springboot-github-actions
 
       - name: Sonar Quality Gate Check
         uses: sonarsource/sonarqube-quality-gate-action@v1

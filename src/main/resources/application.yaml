@@ -1,3 +1,7 @@
 spring:
   application:
     name: hello-app
+
+  sonar:
+    projectKey: kumarkpatil_springboot-github-actions
+
